@@ -5,7 +5,7 @@ grid-template-rows: 1fr;
 grid-column-gap: 0px;
 grid-row-gap: 0px;
 overflow-y:scroll;
-height:800px;
+max-height:800px;
 }
 .flag-img{
 	width:200px;
@@ -76,4 +76,50 @@ box-shadow: 1px 2px 24px 7px #525252;
 	width:100%;
 	height:100vh;
 	visibility:hidden;
+}
+
+@media screen and (max-width: 480px) {
+.flag-img{
+	width:130px;
+	height:90px;
+	padding:10px;
+}
+.parent {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+overflow-y:scroll;
+max-height:800px;
+}
+.nav-bar {
+	margin-bottom:5px;
+	background-color:black;
+	padding:5px;
+}
+.nav-bar >li{
+	padding:5px;
+	text-decoration:none;
+	color:white;
+}
+.box-inner-div{
+	display:block;
+}
+.box-inner-div>div{
+	width:100%;
+	padding:10px;
+}
+.box-img{
+	width:90%;
+	
+	-webkit-box-shadow: 1px 2px 24px 7px #525252; 
+box-shadow: 1px 2px 24px 7px #525252;
+}
+h3{
+	font-size:10px;
+}
+h2{
+	font-size:10px;
+}
 }

@@ -2,11 +2,12 @@ let allCountries =[];
 const countryName = document.getElementById('country-name');
 const countryImg = document.getElementById('country-img');
 let falgsRoot = document.getElementById('flags-root')
- const select = document.getElementById('select');
+ const mySelect = document.getElementById('my-select');
 const mainBox = document.getElementById('main-box');
 const outerMainBox = document.getElementById('outer-main-box');
 const searchCountryBtn = document.getElementById('searchCountryBtn');
 const countryInput = document.getElementById('country-input');
+const selectContinent = document.getElementById('select-continent');
  let country={}
  
  
@@ -52,10 +53,10 @@ function getCountriesNames(){
 
 
 function addNamesToSelectElement(){
-	select.innerHTML+=`<option  value="">pick a country</option>`
+	mySelect.innerHTML+=`<option  value="">pick a country</option>`
 	for (var item of getCountriesNames() ){
 		
-		select.innerHTML+=`<option  value="${item}">${item}</option>`
+		mySelect.innerHTML+=`<option  value="${item}">${item}</option>`
 	}
 	
 }
@@ -83,13 +84,22 @@ function getCountryIndexIngeneralArrByFlagSRC(flag){
 		}
 	}
 }
-select.onchange = (event) => {
+mySelect.onchange = (event) => {
      var inputText = event.target.value;
      console.log(inputText);
 	
 	 let country = (setCounteryObject(findIndexByCountryName(inputText)))
 	 console.log(country);
 	 BuildMainBoxData(country);
+	 event.target.value="";
+ }
+ 
+ selectContinent.onchange = (event) => {
+     var inputText = event.target.value;
+     console.log(inputText);
+	
+	let x = getCountriesByContinent(inputText);
+		 spredAllFlags(getAllFlags(x));
 	 
  }
  
@@ -108,7 +118,7 @@ select.onchange = (event) => {
   function getCountriesByContinent(continents){
 	  
 	 let x = allCountries.filter((item)=>(item.continents[0]==continents))
-	  console.log(x);
+	 return(x);
   }
  getCountriesByContinent('North America');
  
