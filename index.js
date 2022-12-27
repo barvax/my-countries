@@ -67,13 +67,22 @@ function getAllFlags(arr){
 	return x;
 }
 function spredAllFlags(arr){
-	let counter = 0;
+	
 	falgsRoot.innerHTML="";
 	//let flags = getAllFlags();
 	console.log(arr)
-	falgsRoot.innerHTML = arr.map((flag)=>(` <img data-index=${counter++} class='flag-img' src="${flag}" ></img>`)).join("")
+	falgsRoot.innerHTML = arr.map((flag)=>(` <img data-index=${flag} class='flag-img' src="${flag}" ></img>`)).join("")
 }
 
+
+//////////////////////////////////////////////////////////////////////////////////////
+function getCountryIndexIngeneralArrByFlagSRC(flag){
+	for(let i=0;i<allCountries.length;i++){
+		if(flag==allCountries[i].flags.png){
+			return i;
+		}
+	}
+}
 select.onchange = (event) => {
      var inputText = event.target.value;
      console.log(inputText);
@@ -105,7 +114,7 @@ select.onchange = (event) => {
  
  falgsRoot.addEventListener('click',(e)=>{
 	   let index = e.target.closest("img[data-index]").dataset.index;//צריך להעביר דגל ולא אינדקס ואז דרך הדגל לעשות חיפוש של אינדקס
-	 setCounteryObject(index);///צריך לסדר את זה למצוא קודם את האינדקס בתוך כל המערך ורק אז להעביר
+	 setCounteryObject(getCountryIndexIngeneralArrByFlagSRC(index));///צריך לסדר את זה למצוא קודם את האינדקס בתוך כל המערך ורק אז להעביר
 	 BuildMainBoxData(country);
 
  })
